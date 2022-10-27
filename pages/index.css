@@ -1,0 +1,41 @@
+/* Normalize CSS */
+@import url(../vendor/normalize.css);
+
+/* Fonts */
+@import url(../vendor/fonts/fonts.css);
+
+/* Body CSS */
+@import url(../blocks/body/body.css);
+
+/* Page CSS */
+@import url(../blocks/page/page.css);
+
+/* Buttons CSS */
+@import url(../blocks/buttons/buttons.css);
+
+/* Header CSS */
+@import url(../blocks/header/header.css);
+  @import url(../blocks/header/__logo/header__logo.css);
+
+/* Profile CSS */
+@import url(../blocks/profile/profile.css);
+  @import url(../blocks/profile/__user/profile__user.css);
+    @import url(../blocks/profile/__avatar/profile__avatar.css);
+    @import url(../blocks/profile/__info/profile__info.css);
+      @import url(../blocks/profile/__name/profile__name.css);
+      @import url(../blocks/profile/__occupation/profile__occupation.css);
+      @import url(../blocks/profile/__edit-button/profile__edit-button.css);
+  @import url(../blocks/profile/__add-button/profile__add-button.css);
+
+/* Elements CSS */
+@import url(../blocks/elements/elements.css);
+  @import url(../blocks/elements/__grid/elements__grid.css);
+@import url(../blocks/element/element.css);
+  @import url(../blocks/element/__image/element__image.css);
+  @import url(../blocks/element/__bottom/element__bottom.css);
+    @import url(../blocks/element/__name/element__name.css);
+    @import url(../blocks/element/__like/element__like.css);
+
+/* Footer CSS */
+@import url(../blocks/footer/footer.css);
+  @import url(../blocks/footer/__copyright/footer__copyright.css);
