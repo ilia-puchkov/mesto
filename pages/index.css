@@ -12,6 +12,7 @@
 
 /* Buttons CSS */
 @import url(../blocks/buttons/buttons.css);
+  @import url(../blocks/buttons/__submit/buttons__submit.css);
 
 /* Header CSS */
 @import url(../blocks/header/header.css);
@@ -39,3 +40,14 @@
 /* Footer CSS */
 @import url(../blocks/footer/footer.css);
   @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* PopUp CSS */
+@import url(../blocks/popup/popup.css);
+  @import url(../blocks/popup/__header/popup__header.css);
+  @import url(../blocks/popup/__container/popup__container.css);
+  @import url(../blocks/popup/__close-button/popup__close-button.css);
+
+  /* Forms CSS */
+  @import url(../blocks/form/form.css);
+    @import url(../blocks/form/__save__button/form__save-button.css);
+    @import url(../blocks/form/__input/form__input.css);
