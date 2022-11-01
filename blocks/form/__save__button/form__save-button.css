@@ -12,6 +12,7 @@
   line-height: 22px;
   text-align: center;
   color: #FFF;
+  transition: .6s;
 }
 
 @media screen and (max-width: 590px) {
@@ -22,4 +23,9 @@
     font-size: 14px;
     line-height: 17px;
   }
+}
+
+.form__save-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
