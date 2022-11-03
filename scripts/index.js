@@ -5,8 +5,8 @@ let closePopUpButton = document.querySelector('.popup__close-button');
 
 // Обьявление элементов Form
 let formElement = document.querySelector('.form');
-let nameInput = document.querySelector('.form__item_el_name');
-let occupationInput = document.querySelector('.form__item_el_occupation');
+let nameInput = document.querySelector('.form__input_el_name');
+let occupationInput = document.querySelector('.form__input_el_occupation');
 
 // Обьявление элементов User profile
 let profileName = document.querySelector('.profile__name');
