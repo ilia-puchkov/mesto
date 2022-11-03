@@ -1,6 +1,6 @@
 .form__save-button {
   margin-top: 18px;
-  width: 358px;
+  max-width: 358px;
   height: 50px;
   box-sizing: border-box;
   background-color: #000;
@@ -18,7 +18,6 @@
 @media screen and (max-width: 590px) {
   .form__save-button {
     margin-top: 15px;
-    width: 100%;
     height: 46px;
     font-size: 14px;
     line-height: 17px;

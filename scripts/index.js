@@ -1,12 +1,12 @@
 // Объявление элементов popUp
 let popUp = document.querySelector('.popup');
-let changeNameButton = document.querySelector('.profile__edit-button');
+let profileEditButton = document.querySelector('.profile__edit-button');
 let closePopUpButton = document.querySelector('.popup__close-button');
 
 // Обьявление элементов Form
 let formElement = document.querySelector('.form');
-let nameInput = document.getElementById('name-input');
-let jobInput = document.getElementById('occupation-input');
+let nameInput = document.querySelector('.form__input_profile-name');
+let occupationInput = document.querySelector('.form__input_profile-occupation');
 
 // Обьявление элементов User profile
 let profileName = document.querySelector('.profile__name');
@@ -16,10 +16,10 @@ let profileOccupation = document.querySelector('.profile__occupation');
 function showPopUp() {
   popUp.classList.add('popup_opened');
   nameInput.value = profileName.innerHTML;
-  jobInput.value = profileOccupation.innerHTML;
+  occupationInput.value = profileOccupation.innerHTML;
 }
 
-changeNameButton.addEventListener('click', showPopUp);
+profileEditButton.addEventListener('click', showPopUp);
 
 // закрытие ПопАп
 function closePopUp() {
@@ -34,7 +34,7 @@ closePopUpButton.addEventListener('click', closePopUp);
 function formSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
-  profileOccupation.textContent = jobInput.value;
+  profileOccupation.textContent = occupationInput.value;
   closePopUp();
 }
 
