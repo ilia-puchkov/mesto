@@ -17,13 +17,13 @@
       <section class="profile">
         <div class="profile__user">
           <img class="profile__avatar" src="./image/avatar-image.png" alt="аватар">
-          <div class="profile__info">
-            <h2 class="profile__name">Стив Зиссу</h2>
-            <button class="profile__edit-button buttons"></button>
-            <p class="profile__occupation">Он будет мстить</p>
+          <div class="profile__block">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button buttons" type="button" aria-label="Edit user info"></button>
           </div>
+          <p class="profile__occupation">Исследователь океана</p>
+          <button class="profile__add-button buttons" type="button" aria-label="Add new card"></button>
         </div>
-        <button class="profile__add-button buttons"></button>
       </section>
 
       <section class="elements">
@@ -32,42 +32,42 @@
             <img class="element__image" src="./image/elbrus-kirill-pershin-1404681-unsplash.png" alt="эльбрус">
             <div class="element__bottom">
               <p class="element__name">Гора Эльбрус</p>
-              <button class="element__like buttons"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./image/mount-doom.jpg" alt="роковая гора">
             <div class="element__bottom">
               <p class="element__name">Роковая Гора</p>
-              <button class="element__like buttons"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./image/dombai-kirill-pershin-1556355-unsplash.png" alt="домбай">
             <div class="element__bottom">
               <p class="element__name">Домбай</p>
-              <button class="element__like buttons"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./image/batman-bat-cave.jpg" alt="пещера">
             <div class="element__bottom">
               <p class="element__name">Пещера Бэтмена</p>
-              <button class="element__like buttons"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./image/karachaevo-kirill-pershin-1088404-unsplash.png" alt="Карачаево">
             <div class="element__bottom">
               <p class="element__name">Карачаево-Черкессия</p>
-              <button class="element__like buttons"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./image/scotland-toilet.jpg" alt="шотландия">
             <div class="element__bottom">
               <p class="element__name">Худший туалет в Шотландии</p>
-              <button class="element__like buttons"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </li>
         </ul>
@@ -81,16 +81,16 @@
     <div class="popup">
       <div class="popup__container">
         <h2 class="popup__header">Редактировать профиль</h2>
-        <form class="form">
-          <input class="form__input" type="text" id="name-input" name="nameInput" required="required" >
-          <input class="form__input" type="text" id="occupation-input" name="occupationInput" required="required" >
+        <form class="form" name="UserProfileEditForm">
+          <input class="form__input form__input_profile-name" type="text" id="name-input" name="nameInput" required="required" placeholder="Имя">
+          <input class="form__input form__input_profile-occupation" type="text" id="occupation-input" name="occupationInput" required="required" placeholder="Профессия">
           <button class="form__save-button">Сохранить</button>
         </form>
-        <button class="buttons popup__close-button"></button>
+        <button class="buttons popup__close-button" type="button"></button>
       </div>
     </div>
   </div>
 
-  <script src="./pages/index.js"></script>
+  <script defer src="./scripts/index.js"></script>
 </body>
 </html>

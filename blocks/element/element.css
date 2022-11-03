@@ -1,7 +1,9 @@
 .element {
   display: flex;
   flex-direction: column;
-  max-width: 282px;
+  align-content: space-between;
+  width: 282px;
+  height: 361px;
   margin: 0;
   box-sizing: border-box;
   border-radius: 10px;
