@@ -5,8 +5,8 @@ let closePopUpButton = document.querySelector('.popup__close-button');
 
 // Обьявление элементов Form
 let formElement = document.querySelector('.form');
-let nameInput = document.querySelector('.form__input_profile-name');
-let occupationInput = document.querySelector('.form__input_profile-occupation');
+let nameInput = document.querySelector('.form__item_el_name');
+let occupationInput = document.querySelector('.form__item_el_occupation');
 
 // Обьявление элементов User profile
 let profileName = document.querySelector('.profile__name');
@@ -15,8 +15,8 @@ let profileOccupation = document.querySelector('.profile__occupation');
 // Открытие ПопАп
 function showPopUp() {
   popUp.classList.add('popup_opened');
-  nameInput.value = profileName.innerHTML;
-  occupationInput.value = profileOccupation.innerHTML;
+  nameInput.value = profileName.textContent;
+  occupationInput.value = profileOccupation.textContent;
 }
 
 profileEditButton.addEventListener('click', showPopUp);
