@@ -9,6 +9,7 @@
 
 <body class="body">
   <div class="page">
+
     <header class="header">
       <img class="header__logo" src="./image/logo.svg" alt="Логотип - Место">
     </header>
@@ -28,48 +29,6 @@
 
       <section class="elements">
         <ul class="elements__grid">
-          <li class="element">
-            <img class="element__image" src="./image/elbrus-kirill-pershin-1404681-unsplash.png" alt="эльбрус">
-            <div class="element__bottom">
-              <p class="element__name">Гора Эльбрус</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./image/mount-doom.jpg" alt="роковая гора">
-            <div class="element__bottom">
-              <p class="element__name">Роковая Гора</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./image/dombai-kirill-pershin-1556355-unsplash.png" alt="домбай">
-            <div class="element__bottom">
-              <p class="element__name">Домбай</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./image/batman-bat-cave.jpg" alt="пещера">
-            <div class="element__bottom">
-              <p class="element__name">Пещера Бэтмена</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./image/karachaevo-kirill-pershin-1088404-unsplash.png" alt="Карачаево">
-            <div class="element__bottom">
-              <p class="element__name">Карачаево-Черкессия</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./image/scotland-toilet.jpg" alt="шотландия">
-            <div class="element__bottom">
-              <p class="element__name">Худший туалет в Шотландии</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -78,10 +37,11 @@
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+<!--Name and Occupation popUp-->
+    <div class="popup popup_type_edit-profile">
       <div class="popup__container">
         <h2 class="popup__header">Редактировать профиль</h2>
-        <form class="form" name="UserProfileEditForm">
+        <form class="form" name="userProfileEditForm">
           <input class="form__input form__input_el_name" type="text" id="name-input" name="nameInput" required="required" placeholder="Имя">
           <input class="form__input form__input_el_occupation" type="text" id="occupation-input" name="occupationInput" required="required" placeholder="Профессия">
           <button class="form__save-button" type="submit">Сохранить</button>
@@ -89,7 +49,42 @@
         <button class="buttons popup__close-button" type="button"></button>
       </div>
     </div>
+
+<!--addCard popUp-->
+    <div class="popup popup_type_add-card">
+      <div class="popup__container">
+        <h2 class="popup__header">Новое место</h2>
+        <form class="form" name="addNewPlaceForm">
+          <input class="form__input form__input_el_place" type="text" id="place-input" name="placeInput" required="required" placeholder="Название">
+          <input class="form__input form__input_el_place-link" type="text" id="place-link-input" name="placeLinkInput" required="required" placeholder="Ссылка на картинку">
+          <button class="form__save-button" type="submit">Создать</button>
+        </form>
+        <button class="buttons popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+<!--Full image popUp-->
+    <div class="popup popup_type_full-image">
+      <div class="popup__image-container">
+        <img class="popup__image" src="" alt="">
+        <p class="popup__signature"></p>
+        <button class="buttons popup__close-button" type="button"></button>
+      </div>
+    </div>
+
   </div>
+
+<!--Template for elements-->
+    <template class="element__template">
+            <li class="element">
+              <button class="element__delete buttons" type="button"></button>
+              <img class="element__image" src="" alt="прекрасная картинка">
+              <div class="element__bottom">
+                <p class="element__name"></p>
+                <button class="element__like" type="button"></button>
+              </div>
+            </li>
+    </template>
 
   <script defer src="./scripts/index.js"></script>
 </body>
