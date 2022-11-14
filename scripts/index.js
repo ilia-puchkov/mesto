@@ -41,14 +41,14 @@ const profileOccupation = document.querySelector('.profile__occupation');
 
 // Открытие popUp Profile
 profileEditButton.addEventListener('click', () => {
-openPopUp(popUpProfile);
-nameInput.value = profileName.textContent;
-occupationInput.value = profileOccupation.textContent;
+  openPopUp(popUpProfile);
+  nameInput.value = profileName.textContent;
+  occupationInput.value = profileOccupation.textContent;
 });
 
 // Отправка Submit Profile
 function formSubmitHandler (evt) {
-  
+  evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = occupationInput.value;
   closePopUp(evt);
@@ -92,7 +92,7 @@ const initialCards = [
   }
 ];
 // Добавление Initial Cards
-initialCards.forEach (function (item) {
+function createInitialCard (item) {
   const elementItem = elementTemplate.cloneNode(true);
 
   elementItem.querySelector('.element__name').textContent = item.name;
@@ -105,8 +105,14 @@ initialCards.forEach (function (item) {
 
   elementItem.querySelector('.element__delete').addEventListener('click', deleteCard);
 
-  elementsList.append(elementItem);
-});
+  return elementItem;
+};
+
+function placeInitialCard (item) {
+  elementsList.append(createInitialCard(item));
+}
+
+initialCards.forEach(placeInitialCard);
 
 // Обработка Add new Card
 // Объявление элементов Add new Card
@@ -122,8 +128,7 @@ placeAddPopUpButton.addEventListener('click', () => {
 });
 
 // Добавление new card
-function addCard(evt) {
-  evt.preventDefault();
+function createNewCard({placeInput}, {placeLink}) {
   const elementItem = elementTemplate.cloneNode(true);
 
   elementItem.querySelector('.element__name').textContent = placeInput.value;
@@ -136,11 +141,16 @@ function addCard(evt) {
 
   elementItem.querySelector('.element__delete').addEventListener('click', deleteCard);
 
-  elementsList.prepend(elementItem);
+  return elementItem;
+}
 
+function placeNewCard (evt) {
+  evt.preventDefault();
+  elementsList.prepend(createNewCard({placeInput}, {placeLink}));
   closePopUp(evt);
 }
-formPlace.addEventListener('submit', addCard);
+
+formPlace.addEventListener('submit', placeNewCard);
 
 // Обработка Full Image
 // PopUp full Image
