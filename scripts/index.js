@@ -1,6 +1,5 @@
 // Объявления
 // Общие функции
-const buttonsForDelete = document.querySelectorAll('.element__delete');
 const buttonsForClose = document.querySelectorAll('.popup__close-button');
 
 // Объявления для Profile
@@ -66,13 +65,16 @@ placeAddPopUpButton.addEventListener('click', () => {
 function createNewCard(newCardData) {
   const newCard = cardTemplate.cloneNode(true);
 
-  newCard.querySelector('.element__name').textContent = newCardData.name;
-  newCard.querySelector('.element__image').src = newCardData.link;
-  newCard.querySelector('.element__image').alt = newCardData.name;
+  const newCardImage = newCard.querySelector('.element__image');
+  const newCardName = newCard.querySelector('.element__name');
+
+  newCardName.textContent = newCardData.name;
+  newCardImage.src = newCardData.link;
+  newCardImage.alt = newCardData.name;
 
   newCard.querySelector('.element__like').addEventListener('click', handleLikeByClick);
 
-  newCard.querySelector('.element__image').addEventListener('click', fullImage);
+  newCardImage.addEventListener('click', fullImage);
 
   newCard.querySelector('.element__delete').addEventListener('click', handleDeleteCardByClick);
 
@@ -127,8 +129,6 @@ function handleLikeByClick (evt) {
 
 // Обработчики
 buttonsForClose.forEach((buttonItem) => buttonItem.addEventListener('click', handleClosePopUpByClick));
-
-buttonsForDelete.forEach((buttonItem) => buttonItem.addEventListener('click', handleDeleteCardByClick));
 
 initialCards.forEach(placeNewCard);
 
