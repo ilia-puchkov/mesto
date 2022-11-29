@@ -28,7 +28,6 @@
       @import url(../blocks/profile/__edit-button/profile__edit-button.css);
   @import url(../blocks/profile/__add-button/profile__add-button.css);
 
-
 /* Elements CSS */
 @import url(../blocks/elements/elements.css);
   @import url(../blocks/elements/__grid/elements__grid.css);
@@ -56,5 +55,9 @@
 
   /* Forms CSS */
   @import url(../blocks/form/form.css);
-    @import url(../blocks/form/__save__button/form__save-button.css);
+    @import url(../blocks/form/__save-button/form__save-button.css);
+      @import url(../blocks/form/__save-button/_inactive/form__save-button_inactive.css);
     @import url(../blocks/form/__input/form__input.css);
+    @import url(../blocks/form/__input-error/form__input-error.css);
+      @import url(../blocks/form/__input-error/_visible/form__input-error_visible.css);
+      @import url(../blocks/form/__input/_type/_error/form__input_type_error.css);

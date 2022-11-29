@@ -28,12 +28,29 @@ const formPlace = document.forms.addNewPlaceForm;
 // Функции
 // Открытие popUp (базовая)
 function openPopUp(popUp) {
-  popUp.classList.add('popup_opened');
+  popUp.classList.add('popup_opened');  
+  popUp.addEventListener('click', handleClosePopUpByOverlay);
+  document.addEventListener('keydown', handleCloseWithEsc);
 }
 
 // Закрытие popUp (базовая)
 function closePopUp(popUp) {
-  popUp.classList.remove('popup_opened');
+  popUp.classList.remove('popup_opened');  
+  popUp.removeEventListener('click', handleClosePopUpByOverlay);
+  document.removeEventListener('keydown', handleCloseWithEsc);
+}
+
+// Закрытие при клике по popUp
+function handleClosePopUpByOverlay(evt) {
+  closePopUp(evt.target);
+}
+
+// Закрытие при Esc
+function handleCloseWithEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopUp = document.querySelector('.popup_opened')
+    closePopUp(openedPopUp);
+  }
 }
 
 // Открытие popUp Profile
@@ -109,9 +126,9 @@ function fullImage(evt){
 // Закрытие popUp
 function handleClosePopUpByClick(evt) {
   evt.preventDefault();
-
-  const parentPopUp = evt.target.closest('.popup');
-  closePopUp(parentPopUp);
+  
+    const parentPopUp = evt.target.closest('.popup');
+    closePopUp(parentPopUp);
 };
 
 // Удаление карточки
