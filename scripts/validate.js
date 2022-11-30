@@ -12,6 +12,12 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+};
+
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -20,10 +26,14 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  })
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('form__save-button_inactive');
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove('form__save-button_inactive');
+    buttonElement.disabled = false;
+  }
 };
 
 const setEventListeners = (formElement) => {
@@ -46,16 +56,9 @@ const enableValidation = () => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
+
       setEventListeners(formElement);
   });
-};
-
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('form__save-button_inactive');
- } else {
-    buttonElement.classList.remove('form__save-button_inactive');
- }
 };
 
 enableValidation({

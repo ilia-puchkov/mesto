@@ -52,6 +52,7 @@
   @import url(../blocks/popup/__image-container/popup__image-container.css);
     @import url(../blocks/popup/__image/popup__image.css);
     @import url(../blocks/popup/__signature/popup__signature.css);
+    @import url(../blocks/popup/_type/_full-image/popup_type_full-image.css);
 
   /* Forms CSS */
   @import url(../blocks/form/form.css);
