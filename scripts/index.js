@@ -55,10 +55,10 @@ function handleCloseWithEsc(evt) {
 
 // Открытие popUp Profile
 profileEditButton.addEventListener('click', () => {
-  openPopUp(popUpProfile);
-
   nameInput.value = profileName.textContent;
   occupationInput.value = profileOccupation.textContent;
+
+  openPopUp(popUpProfile);
 });
 
 // Отправка Submit Profile
@@ -127,8 +127,8 @@ function fullImage(evt){
 function handleClosePopUpByClick(evt) {
   evt.preventDefault();
   
-    const parentPopUp = evt.target.closest('.popup');
-    closePopUp(parentPopUp);
+  const parentPopUp = evt.target.closest('.popup');
+  closePopUp(parentPopUp);
 };
 
 // Удаление карточки
