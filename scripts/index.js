@@ -24,6 +24,8 @@ const formInputWithPlaceLink = document.querySelector('.form__input_el_place-lin
 const popUpNewCardForm = document.querySelector('.popup_type_add-card');
 const placeAddPopUpButton = document.querySelector('.profile__add-button');
 const formPlace = document.forms.addNewPlaceForm;
+const cardSubmitButton = document.querySelector('.form__save-button_card');
+const inputList = Array.from(document.querySelectorAll(".form__input"));
 
 // Функции
 // Открытие popUp (базовая)
@@ -31,6 +33,10 @@ function openPopUp(popUp) {
   popUp.classList.add('popup_opened');  
   popUp.addEventListener('click', handleClosePopUpByOverlay);
   document.addEventListener('keydown', handleCloseWithEsc);
+
+  handleErrorStyleDeletion();
+
+  setSubmitButtonState(false, cardSubmitButton);
 }
 
 // Закрытие popUp (базовая)

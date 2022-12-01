@@ -1,8 +1,6 @@
 .form__input-error {
   display: block;
   visibility: hidden;
-  margin-top: 5px;
-  margin-bottom: 13px;
   max-width: 358px;
   font-family: 'Inter';
   font-style: normal;
