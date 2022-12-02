@@ -33,10 +33,6 @@ function openPopUp(popUp) {
   popUp.classList.add('popup_opened');  
   popUp.addEventListener('click', handleClosePopUpByOverlay);
   document.addEventListener('keydown', handleCloseWithEsc);
-
-  handleErrorStyleDeletion();
-
-  setSubmitButtonState(false, cardSubmitButton);
 }
 
 // Закрытие popUp (базовая)
@@ -65,6 +61,8 @@ profileEditButton.addEventListener('click', () => {
   occupationInput.value = profileOccupation.textContent;
 
   openPopUp(popUpProfile);
+
+  handleErrorStyleDeletion();
 });
 
 // Отправка Submit Profile
@@ -82,6 +80,10 @@ placeAddPopUpButton.addEventListener('click', () => {
   openPopUp(popUpNewCardForm);
 
   formPlace.reset();
+
+  handleErrorStyleDeletion();
+
+  setSubmitButtonState(false, cardSubmitButton);
 });
 
 // Добавление new card
