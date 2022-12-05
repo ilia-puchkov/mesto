@@ -62,7 +62,7 @@ profileEditButton.addEventListener('click', () => {
 
   openPopUp(popUpProfile);
 
-  handleErrorStyleDeletion();
+  handleErrorStyleDeletion(formsConfig);
 });
 
 // Отправка Submit Profile
@@ -81,9 +81,9 @@ placeAddPopUpButton.addEventListener('click', () => {
 
   formPlace.reset();
 
-  handleErrorStyleDeletion();
+  handleErrorStyleDeletion(formsConfig);
 
-  setSubmitButtonState(false, cardSubmitButton);
+  setSubmitButtonState(false, cardSubmitButton, formsConfig);
 });
 
 // Добавление new card
