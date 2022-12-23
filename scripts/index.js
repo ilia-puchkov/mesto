@@ -1,4 +1,9 @@
 // Объявления
+
+// Import
+import { initialCards } from "./initialCards.js";
+import { Card } from "./Card.js";
+
 // Общие функции
 const buttonsForClose = document.querySelectorAll('.popup__close-button');
 
@@ -88,27 +93,15 @@ placeAddPopUpButton.addEventListener('click', () => {
 
 // Добавление new card
 function createNewCard(newCardData) {
-  const newCard = cardTemplate.cloneNode(true);
+  const card = new Card(newCardData);
+  const cardElement = card.generateCard();
 
-  const newCardImage = newCard.querySelector('.element__image');
-  const newCardName = newCard.querySelector('.element__name');
-
-  newCardName.textContent = newCardData.name;
-  newCardImage.src = newCardData.link;
-  newCardImage.alt = newCardData.name;
-
-  newCard.querySelector('.element__like').addEventListener('click', handleLikeByClick);
-
-  newCardImage.addEventListener('click', fullImage);
-
-  newCard.querySelector('.element__delete').addEventListener('click', handleDeleteCardByClick);
-
-  return newCard;
+  return cardElement;
 }
 
 // Размещение new card
 function placeNewCard(newCardData) {
-  cardsContainer.prepend(createNewCard(newCardData));  
+  cardsContainer.prepend(createNewCard(newCardData));
 }
 
 // New Card Submit
