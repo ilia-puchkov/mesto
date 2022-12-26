@@ -24,3 +24,5 @@ const initialCards = [
     link: 'https://phonoteka.org/uploads/posts/2021-07/1625626603_20-phonoteka-org-p-mordor-art-krasivo-21.jpg'
   }
 ];
+
+export {initialCards};

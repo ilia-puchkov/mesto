@@ -1,6 +1,26 @@
 // Объявления
+// Import
+import { initialCards } from "./initialCards.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
+//Export
+export {fullImagePopUp};
+export {imageForFullImagePopUp};
+export {openPopUp};
+export {signatureForFullImagePopUp};
+
 // Общие функции
 const buttonsForClose = document.querySelectorAll('.popup__close-button');
+const formsConfig = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__save-button',
+  inactiveButtonClass: 'form__save-button_inactive',
+  inputError: '.form__input-error',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_visible'
+};
 
 // Объявления для Profile
 const popUpProfile = document.querySelector('.popup_type_edit-profile');
@@ -13,7 +33,7 @@ const profileOccupation = document.querySelector('.profile__occupation');
 
 // Объявления для карт elements
 const cardsContainer = document.querySelector('.elements__grid');
-const cardTemplate = document.querySelector('.element__template').content;
+const cardTemplate = '.element__template';
 const fullImagePopUp = document.querySelector('.popup_type_full-image');
 const imageForFullImagePopUp = document.querySelector('.popup__image');
 const signatureForFullImagePopUp = document.querySelector('.popup__signature');
@@ -24,8 +44,14 @@ const formInputWithPlaceLink = document.querySelector('.form__input_el_place-lin
 const popUpNewCardForm = document.querySelector('.popup_type_add-card');
 const placeAddPopUpButton = document.querySelector('.profile__add-button');
 const formPlace = document.forms.addNewPlaceForm;
-const cardSubmitButton = document.querySelector('.form__save-button_card');
-const inputList = Array.from(document.querySelectorAll(".form__input"));
+
+// Валидация формы добавления карточки
+const cardFromValidator = new FormValidator(formsConfig, popUpNewCardForm);
+cardFromValidator.enableValidation();
+
+// Валидация формы изменения профиля
+const profileFormValidator = new FormValidator(formsConfig, popUpProfile);
+profileFormValidator.enableValidation();
 
 // Функции
 // Открытие popUp (базовая)
@@ -62,7 +88,7 @@ profileEditButton.addEventListener('click', () => {
 
   openPopUp(popUpProfile);
 
-  handleErrorStyleDeletion(formsConfig);
+  profileFormValidator.handleErrorStyleDeletion();
 });
 
 // Отправка Submit Profile
@@ -81,34 +107,20 @@ placeAddPopUpButton.addEventListener('click', () => {
 
   formPlace.reset();
 
-  handleErrorStyleDeletion(formsConfig);
-
-  setSubmitButtonState(false, cardSubmitButton, formsConfig);
+  cardFromValidator.handleErrorStyleDeletion();
 });
 
 // Добавление new card
 function createNewCard(newCardData) {
-  const newCard = cardTemplate.cloneNode(true);
+  const card = new Card(newCardData, cardTemplate);
+  const cardElement = card.generateCard();
 
-  const newCardImage = newCard.querySelector('.element__image');
-  const newCardName = newCard.querySelector('.element__name');
-
-  newCardName.textContent = newCardData.name;
-  newCardImage.src = newCardData.link;
-  newCardImage.alt = newCardData.name;
-
-  newCard.querySelector('.element__like').addEventListener('click', handleLikeByClick);
-
-  newCardImage.addEventListener('click', fullImage);
-
-  newCard.querySelector('.element__delete').addEventListener('click', handleDeleteCardByClick);
-
-  return newCard;
+  return cardElement;
 }
 
 // Размещение new card
 function placeNewCard(newCardData) {
-  cardsContainer.prepend(createNewCard(newCardData));  
+  cardsContainer.prepend(createNewCard(newCardData));
 }
 
 // New Card Submit
@@ -120,17 +132,6 @@ function handleNewCardFormSubmit(evt) {
   closePopUp(popUpNewCardForm);
 }
 
-// Обработка Full Image
-function fullImage(evt){
-  openPopUp(fullImagePopUp);
-
-  const imageSource = evt.target;
-  
-  imageForFullImagePopUp.src = imageSource.src;
-  imageForFullImagePopUp.alt = imageSource.alt;
-  signatureForFullImagePopUp.textContent = imageSource.alt;
-}
-
 // Закрытие popUp
 function handleClosePopUpByClick(evt) {
   evt.preventDefault();
@@ -138,19 +139,6 @@ function handleClosePopUpByClick(evt) {
   const parentPopUp = evt.target.closest('.popup');
   closePopUp(parentPopUp);
 };
-
-// Удаление карточки
-function handleDeleteCardByClick (evt) {
-  evt.preventDefault();
-
-  const parentBlock = evt.target.closest('.element');
-  parentBlock.remove();
-}
-
-// Установка Like
-function handleLikeByClick (evt) {
-  evt.target.classList.toggle('element__like-active');
-}
 
 // Обработчики
 buttonsForClose.forEach((buttonItem) => buttonItem.addEventListener('click', handleClosePopUpByClick));
