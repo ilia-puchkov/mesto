@@ -1,3 +1,6 @@
+// Import
+import {openPopUp, fullImagePopUp, imageForFullImagePopUp, signatureForFullImagePopUp} from './index.js';
+
 class Card {
   // Конструктор класса
   constructor(data, cardtemplate) {
@@ -9,6 +12,7 @@ class Card {
     this._element = this._getTemplate();
     this._elementLikeButton = this._element.querySelector('.element__like');
     this._elementDeleteButton = this._element.querySelector('.element__delete');
+    this._elementImage = this._element.querySelector('.element__image');
   }
 
   // Получение формы для карточки
@@ -32,6 +36,15 @@ class Card {
     this._elementLikeButton.classList.toggle('element__like-active');
   }
 
+  // Открытие большого попАпа
+  _handleOpenFullImage() {
+    imageForFullImagePopUp.src = this._elementImage.src;
+    imageForFullImagePopUp.textContent = this._elementImage.alt;
+    signatureForFullImagePopUp.textContent = this._elementImage.alt;
+
+    openPopUp(fullImagePopUp);
+  }
+
   // Назначение слушателей
   _setEventListeners() {
     this._elementDeleteButton.addEventListener('click', () => {
@@ -40,6 +53,10 @@ class Card {
 
     this._elementLikeButton.addEventListener('click', () => {
       this._handleLikeCard();
+    });
+
+    this._elementImage.addEventListener('click', () => {
+      this._handleOpenFullImage();
     });
   }
 
@@ -53,7 +70,6 @@ class Card {
   
     return this._element;
   }
-
 }
 
 // Экспорт 

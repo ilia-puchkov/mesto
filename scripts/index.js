@@ -1,9 +1,14 @@
 // Объявления
-
 // Import
 import { initialCards } from "./initialCards.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+
+//Export
+export {fullImagePopUp};
+export {imageForFullImagePopUp};
+export {openPopUp};
+export {signatureForFullImagePopUp};
 
 // Общие функции
 const buttonsForClose = document.querySelectorAll('.popup__close-button');
@@ -25,8 +30,6 @@ const nameInput = document.querySelector('.form__input_el_name');
 const occupationInput = document.querySelector('.form__input_el_occupation');
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
-const profileFormValidator = new FormValidator(formsConfig, popUpProfile);
-profileFormValidator.enableValidation();
 
 // Объявления для карт elements
 const cardsContainer = document.querySelector('.elements__grid');
@@ -41,10 +44,14 @@ const formInputWithPlaceLink = document.querySelector('.form__input_el_place-lin
 const popUpNewCardForm = document.querySelector('.popup_type_add-card');
 const placeAddPopUpButton = document.querySelector('.profile__add-button');
 const formPlace = document.forms.addNewPlaceForm;
-const cardSubmitButton = document.querySelector('.form__save-button_card');
-const inputList = Array.from(document.querySelectorAll(".form__input"));
+
+// Валидация формы добавления карточки
 const cardFromValidator = new FormValidator(formsConfig, popUpNewCardForm);
 cardFromValidator.enableValidation();
+
+// Валидация формы изменения профиля
+const profileFormValidator = new FormValidator(formsConfig, popUpProfile);
+profileFormValidator.enableValidation();
 
 // Функции
 // Открытие popUp (базовая)
@@ -125,17 +132,6 @@ function handleNewCardFormSubmit(evt) {
   closePopUp(popUpNewCardForm);
 }
 
-// Обработка Full Image
-function fullImage(evt){
-  openPopUp(fullImagePopUp);
-
-  const imageSource = evt.target;
-  
-  imageForFullImagePopUp.src = imageSource.src;
-  imageForFullImagePopUp.alt = imageSource.alt;
-  signatureForFullImagePopUp.textContent = imageSource.alt;
-}
-
 // Закрытие popUp
 function handleClosePopUpByClick(evt) {
   evt.preventDefault();
@@ -143,20 +139,7 @@ function handleClosePopUpByClick(evt) {
   const parentPopUp = evt.target.closest('.popup');
   closePopUp(parentPopUp);
 };
-/*
-// Удаление карточки
-function handleDeleteCardByClick (evt) {
-  evt.preventDefault();
 
-  const parentBlock = evt.target.closest('.element');
-  parentBlock.remove();
-}
-
-// Установка Like
-function handleLikeByClick (evt) {
-  evt.target.classList.toggle('element__like-active');
-}
-*/
 // Обработчики
 buttonsForClose.forEach((buttonItem) => buttonItem.addEventListener('click', handleClosePopUpByClick));
 
