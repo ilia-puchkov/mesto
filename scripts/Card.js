@@ -1,11 +1,9 @@
-// Import
-import {openPopUp, fullImagePopUp, imageForFullImagePopUp, signatureForFullImagePopUp} from './index.js';
-
-class Card {
+export default class Card {
   // Конструктор класса
-  constructor(data, cardtemplate) {
+  constructor(data, cardtemplate, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
 
     this._templateselector = cardtemplate;
 
@@ -36,6 +34,7 @@ class Card {
     this._elementLikeButton.classList.toggle('element__like-active');
   }
 
+/*
   // Открытие большого попАпа
   _handleOpenFullImage() {
     imageForFullImagePopUp.src = this._elementImage.src;
@@ -44,6 +43,7 @@ class Card {
 
     openPopUp(fullImagePopUp);
   }
+*/
 
   // Назначение слушателей
   _setEventListeners() {
@@ -56,7 +56,7 @@ class Card {
     });
 
     this._elementImage.addEventListener('click', () => {
-      this._handleOpenFullImage();
+      this._handleCardClick(this._name, this._link);
     });
   }
 
@@ -72,5 +72,4 @@ class Card {
   }
 }
 
-// Экспорт 
 export {Card};
