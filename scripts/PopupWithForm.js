@@ -1,6 +1,6 @@
 import { PopUp } from './PopUp.js';
 
-export default class PopupWithForm extends PopUp {
+class PopupWithForm extends PopUp {
   // Обновление конструктора
   constructor(popUp, formSubmit) {
     super(popUp);
@@ -12,8 +12,8 @@ export default class PopupWithForm extends PopUp {
   // Сбор данных полей
   _getInputValues() {
     this.inputValues = {};
-    this._inputList.forEach(item => {
-      this._inputValues[item.name] = item.value;
+    this._inputList.forEach(input => {
+      this._inputValues[input.name] = input.value;
     });
 
     return this._inputValues;

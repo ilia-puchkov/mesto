@@ -1,6 +1,6 @@
 import { PopUp } from './PopUp.js';
 
-export default class PopupWithImage extends PopUp {
+class PopupWithImage extends PopUp {
   //конструктор для расширения
   constructor(popUp) {
     super(popUp);
@@ -9,10 +9,10 @@ export default class PopupWithImage extends PopUp {
   }
 
   // Расширение
-  open(signature, src) {
-    this._image.src = src;
-    this._image.alt = signature;
-    //this._title.textContent = signature;
+  open(name, link) {
+    this._image.src = link;
+    this._image.alt = name;
+    this._signature.textContent = name;
     super.open();
   }
 }

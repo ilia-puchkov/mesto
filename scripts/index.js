@@ -4,7 +4,6 @@ import { initialCards } from "./initialCards.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { Section } from './Section.js';
-import { PopUp } from './PopUp.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
@@ -29,6 +28,7 @@ const nameInput = document.querySelector('.form__input_el_name');
 const occupationInput = document.querySelector('.form__input_el_occupation');
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
+const img = document.querySelector('.popup_type_full-image');
 
 // Объявления для карт elements
 const cardsContainer = document.querySelector('.elements__grid');
@@ -71,13 +71,20 @@ const placeNewCard = new Section({
 
 placeNewCard.renderElement();
 
-initialCards.placeNewCard();
+// Обработка открытия большого изображения
+const popupWithCardImage = new PopupWithImage(img);
+popupWithCardImage.setEventListeners();
 
 function handleCardClick(name, link) {
-  const popupView = new PopupWithImage('.popup_type_full-image', name, link);
-  popupView.setEventListeners();
-  popupView.open();
+  popupWithCardImage.open(name, link);
 }
+
+
+const userInfo = new UserInfo(profileName, profileOccupation);
+
+
+
+
 /*
 // Отправка Submit Profile
 function handleProfileFormSubmit(evt) {

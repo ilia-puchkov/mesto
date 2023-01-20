@@ -1,21 +1,20 @@
 class PopUp {
   // Конструктор класса
   constructor(popUp) {
-    this._popUp = document.querySelector(popUp);
+    this._popUp = popUp;
     this._buttonsForClose = this._popUp.querySelector('.popup__close-button');
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   // Открытие окна
   open() {
     this._popUp.classList.add('popup_opened');
-    this._popUp.addEventListener('click', this._handleCloseByOverlay);
     document.addEventListener('keydown', this._handleEscClose);
   }
 
   // Закрытие окна
   close() {
     this._popUp.classList.remove('popup_opened');
-    this._popUp.removeEventListener('click', this._handleCloseByOverlay);
     document.removeEventListener('keydown', this._handleEscClose);
   }
 
@@ -28,14 +27,18 @@ class PopUp {
 
   // Закрытие через оверлей
   _handleCloseByOverlay(evt) {
-    if(evt.target.classList.contains('popup_opened')) {
+    if(evt.target === evt.currentTarget) {
       this.close();
     }
   }
 
   // Слушатель для кнопки закрытия
   setEventListeners() {
-    this._buttonsForClose.addEventListener('click', this.close());
+    this._buttonsForClose.addEventListener('click', () => this.close());
+
+    this._popUp.addEventListener('click', (evt) => {
+      this._handleCloseByOverlay(evt);
+    });
   }
 }
 

@@ -1,4 +1,4 @@
-export default class Section {
+class Section {
   // Конструктор класса
   constructor({items, renderer}, containerSelector) {
     this._items = items;
@@ -12,8 +12,8 @@ export default class Section {
   }
 
   // Размещение
-  addItem(item) {
-    this._selector.prepend(item);
+  addItem(element) {
+    this._selector.prepend(element);
   }
 }
 

@@ -1,4 +1,4 @@
-export default class Card {
+class Card {
   // Конструктор класса
   constructor(data, cardtemplate, handleCardClick) {
     this._name = data.name;
@@ -27,6 +27,7 @@ export default class Card {
   // Удаление карточки
   _handleDeleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   // Добавление / удаление лайка
