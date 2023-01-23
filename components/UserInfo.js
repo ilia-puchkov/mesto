@@ -9,16 +9,16 @@ class UserInfo {
   getUserInfo() {
     this._userInfo = {
       name: this._name.textContent,
-      job: this._occupation.textContent
+      occupation: this._occupation.textContent
     }
 
     return this._userInfo;
   }
 
   // Установка данных
-  setUserInfo({name, job}) {
+  setUserInfo({name, occupation}) {
     this._name.textContent = name;
-    this._occupation.textContent = job;
+    this._occupation.textContent = occupation;
   }
 }
 

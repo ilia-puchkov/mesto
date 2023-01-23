@@ -2,16 +2,19 @@ import { PopUp } from './PopUp.js';
 
 class PopupWithForm extends PopUp {
   // Обновление конструктора
-  constructor(popUp, formSubmit) {
+  constructor({popUp, handleSubmitForm}) {
     super(popUp);
-    this._formSubmit = formSubmit;
-    this._popupForm = this._popupForm.querySelector('.form');
-    this._inputList = Array.from(this._popupForm.querySelectorAll('.form__input'));
+
+    this._popupForm = this._popUp.querySelector('.form');
+    this._inputList = this._popupForm.querySelectorAll('.form__input');
+
+    this._handleSubmitForm = handleSubmitForm;
   }
 
   // Сбор данных полей
   _getInputValues() {
-    this.inputValues = {};
+    this._inputValues = {};
+
     this._inputList.forEach(input => {
       this._inputValues[input.name] = input.value;
     });
@@ -22,16 +25,18 @@ class PopupWithForm extends PopUp {
   // Обновление родительского метода
   setEventListeners() {
     super.setEventListeners();
-    this._popupForm.addEventListeners('submit', (evt) => {
+
+    this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
 
-      this._formSubmit(this._getInputValues());
+      this._handleSubmitForm(this._getInputValues());
     });
   }
 
   // Обновление родительского метода
   close() {
     super.close();
+
     this._popupForm.reset();
   }
 }
