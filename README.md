@@ -1,4 +1,4 @@
-![logo](./image/readme-header.png)
+![logo](./src/image/readme-header.png)
 
 # Проект: МЕСТО
 
