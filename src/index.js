@@ -1,12 +1,14 @@
 // Объявления
+import './pages/index.css';
+
 // Import
-import { initialCards } from "../utils/initialCards.js";
-import { Card } from "../components/Card.js";
-import { FormValidator } from "../components/FormValidator.js";
-import { Section } from '../components/Section.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
-import { PopupWithForm } from '../components/PopupWithForm.js';
-import { UserInfo } from '../components/UserInfo.js';
+import { initialCards } from "./utils/initialCards.js";
+import { Card } from "./components/Card.js";
+import { FormValidator } from "./components/FormValidator.js";
+import { Section } from './components/Section.js';
+import { PopupWithImage } from './components/PopupWithImage.js';
+import { PopupWithForm } from './components/PopupWithForm.js';
+import { UserInfo } from './components/UserInfo.js';
 import {
   formsConfig,
   popUpProfile,
@@ -20,7 +22,7 @@ import {
   cardTemplate,
   popUpNewCardForm,
   placeAddPopUpButton
-} from '../utils/utils.js';
+} from './utils/utils.js';
 
 //=====================================================
 // Валидация формы добавления карточки
