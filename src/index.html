@@ -41,10 +41,14 @@
       <div class="popup__container">
         <h2 class="popup__header">Редактировать профиль</h2>
         <form class="form" name="userProfileEditForm" novalidate>
+          <div class="form__input-block">
           <input class="form__input form__input_el_name" type="text" id="name-input" name="name" placeholder="Имя" minlength="2" maxlength="40" required>
           <span class="form__input-error name-input-error"></span>
+          </div>
+          <div class="form__input-block">
           <input class="form__input form__input_el_occupation" type="text" id="occupation-input" name="occupation" placeholder="О себе" minlength="2" maxlength="200" required>
           <span class="form__input-error occupation-input-error"></span>
+          </div>
           <button class="form__save-button" type="submit">Сохранить</button>
         </form>
         <button class="buttons popup__close-button" type="button"></button>
@@ -56,10 +60,14 @@
       <div class="popup__container">
         <h2 class="popup__header">Новое место</h2>
         <form class="form popup__form" name="addNewPlaceForm" novalidate>
+          <div class="form__input-block">
           <input class="form__input form__input_el_place" type="text" id="place-input" name="name" placeholder="Название" minlength="2" maxlength="30" required>
           <span class="form__input-error place-input-error"></span>
+          </div>
+          <div class="form__input-block">
           <input class="form__input form__input_el_place-link" type="url" id="place-link-input" name="link" placeholder="Ссылка на картинку" required>
           <span class="form__input-error place-link-input-error"></span>
+          </div>
           <button class="form__save-button form__save-button_card" type="submit">Создать</button>
         </form>
         <button class="buttons popup__close-button" type="button"></button>
@@ -88,6 +96,5 @@
               </div>
             </li>
     </template>
-
 </body>
 </html>
