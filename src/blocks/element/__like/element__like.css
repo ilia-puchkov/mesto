@@ -1,7 +1,7 @@
 .element__like {
     min-width: 22px;
     min-height: 19px;
-    margin: 30px 0 30px;
+    margin-bottom: 3px;
     background-image: url(../../../image/like-inactive.svg);
     background-position: center;
     background-repeat: no-repeat;
