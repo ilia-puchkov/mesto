@@ -1,14 +1,15 @@
 class Section {
   // Конструктор класса
-  constructor({items, renderer}, container) {
-    this._items = items;
+  constructor({renderer}, container) {
     this._renderer = renderer;
     this._container = container;
   }
 
   // Отрисовка
-  renderElement() {
-    this._items.forEach((item) => this._renderer(item));
+  renderItems(items, userId) {
+    this._items = items;
+    this._userId = userId;
+    this._items.forEach((item) => this._renderer(item, this._userId));
   }
 
   // Размещение

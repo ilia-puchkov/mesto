@@ -17,6 +17,9 @@ export const occupationInput = document.querySelector('.form__input_el_occupatio
 export const profileName = document.querySelector('.profile__name');
 export const profileOccupation = document.querySelector('.profile__occupation');
 export const fullImage = document.querySelector('.popup_type_full-image');
+export const profileAvatar = document.querySelector('.profile__avatar');
+export const popupAvatarChange = document.querySelector('.popup_type_avatar-change');
+export const profileAvatarEditButton = document.querySelector('.profile__avatar-edit');
 
 // Объявления для карт elements
 export const cardsContainer = document.querySelector('.elements__grid');
@@ -25,3 +28,4 @@ export const cardTemplate = '.element__template';
 // Объявление элементов Add new Card
 export const popUpNewCardForm = document.querySelector('.popup_type_add-card');
 export const placeAddPopUpButton = document.querySelector('.profile__add-button');
+export const popupWithCardConfirmation = document.querySelector('.popup_type_delete-confirmation');
