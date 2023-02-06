@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<link rel="stylesheet" href="./pages/index.css">-->
   <title>Mesto</title>
 </head>
 
@@ -10,18 +11,23 @@
   <div class="page">
 
     <header class="header">
+      <!--<img class="header__logo" src="./image/logo.svg" alt="Логотип - Место">-->
       <img class="header__logo" src="<%=require('./image/logo.svg')%>" alt="Логотип - Место">
     </header>
 
     <main class="content">
       <section class="profile">
         <div class="profile__user">
-          <img class="profile__avatar" src="<%=require('./image/avatar-image.png')%>" alt="аватар">
+          <div class="profile__avatar-block">
+            <button class="profile__avatar-edit buttons" type="button" aria-label="Edit user avatar"></button>
+            <img class="profile__avatar" src="#" alt="аватар">
+            <!--<img class="profile__avatar" src="<%=require('./image/avatar-image.png')%>" alt="аватар">-->
+          </div>
           <div class="profile__block">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-button buttons" type="button" aria-label="Edit user info"></button>
           </div>
-          <p class="profile__occupation">Исследователь океана</p>
+          <p class="profile__occupation"></p>
           <button class="profile__add-button buttons" type="button" aria-label="Add new card"></button>
         </div>
       </section>
@@ -83,18 +89,50 @@
       </div>
     </div>
 
+<!--Delete confirmatipon popUp-->
+    <div class="popup popup_type_delete-confirmation">
+      <div class="popup__container">
+        <h2 class="popup__header popup__header_type_card-delete">Вы уверены?</h2>
+        <form class="form popup__form" name="deleteCardForm" novalidate>
+          <button class="form__save-button" type="submit">Да</button>
+        </form>
+        <button class="buttons popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+<!--Avatar popUp-->
+<div class="popup popup_type_avatar-change">
+  <div class="popup__container">
+    <h2 class="popup__header">Обновить аватар</h2>
+    <form class="form" name="userAvatarEditForm" novalidate>
+      <div class="form__input-block">
+      <input class="form__input form__input_el_avatar" type="url" id="avatar-link-input" name="avatar" placeholder="Ссылка на аватар" required>
+      <span class="form__input-error avatar-link-input-error"></span>
+      </div>
+      <button class="form__save-button" type="submit">Сохранить</button>
+    </form>
+    <button class="buttons popup__close-button" type="button"></button>
+  </div>
+</div>
+
   </div>
 
 <!--Template for elements-->
     <template class="element__template">
             <li class="element">
-              <button class="element__delete buttons" type="button"></button>
+              <button class="element__delete buttons element__delete-visible" type="button"></button>
               <img class="element__image" src="#" alt="#">
               <div class="element__bottom">
                 <p class="element__name"></p>
-                <button class="element__like" type="button"></button>
+                <div class="element__likes">
+                  <button class="element__like" type="button"></button>
+                  <p class="element__like-count"></p>
+                </div>
               </div>
             </li>
     </template>
+
+  <!--<script defer type="module" src="./index.js"></script>-->
+
 </body>
 </html>

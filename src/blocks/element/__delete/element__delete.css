@@ -8,4 +8,5 @@
   background-size: cover;
   background-color: transparent;
   border: 0;
+  visibility: hidden;
 }

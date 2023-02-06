@@ -7,6 +7,7 @@ class PopupWithForm extends PopUp {
 
     this._popupForm = this._popUp.querySelector('.form');
     this._inputList = this._popupForm.querySelectorAll('.form__input');
+    this._submitButton = this._popupForm.querySelector('.form__save-button');
 
     this._handleSubmitForm = handleSubmitForm;
   }
@@ -21,6 +22,11 @@ class PopupWithForm extends PopUp {
 
     return this._inputValues;
   }
+
+    //Текст при подтверждении
+    renderLoading(text) {
+      this._submitButton.textContent = text;
+    }
 
   // Обновление родительского метода
   setEventListeners() {

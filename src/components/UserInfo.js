@@ -1,24 +1,33 @@
 class UserInfo {
   // Конструктор
-  constructor({name, occupation}) {
+  constructor(name, occupation, avatar) {
     this._name = name;
     this._occupation = occupation;
+    this._avatar = avatar;
   }
 
   // Получение данных
   getUserInfo() {
-    this._userInfo = {
+    const userData = {
       name: this._name.textContent,
-      occupation: this._occupation.textContent
+      occupation: this._occupation.textContent,
+      avatar: this._avatar.src,
+      id: this._id
     }
 
-    return this._userInfo;
+    return userData;
   }
 
   // Установка данных
-  setUserInfo({name, occupation}) {
-    this._name.textContent = name;
-    this._occupation.textContent = occupation;
+  setUserInfo(data) {
+    this._name.textContent = data.name;
+    this._occupation.textContent = data.about;
+    this.updateAvatar(data);
+    this._id = data._id;
+  }
+
+  updateAvatar(data) {
+    this._avatar.src = data.avatar;
   }
 }
 
