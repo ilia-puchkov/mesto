@@ -48,7 +48,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     userInfo.setUserInfo(userData);
     userId = userData._id;
 
-    cardList.renderItems(cardData, userData._id);
+    cardList.renderItems(cardData, userId);
   })
   .catch((err) =>{
     console.log(err);
@@ -63,11 +63,11 @@ cardFromValidator.enableValidation();
 // Валидация формы изменения профиля
 const profileFormValidator = new FormValidator(formsConfig, popUpProfile);
 profileFormValidator.enableValidation();
-/*
+
 // Валидация формы изменения аватара
 const avatarFormValidator = new FormValidator(formsConfig, popupAvatarChange);
 avatarFormValidator.enableValidation();
-*/
+
 //=====================================================
 // Обработка открытия большого изображения
 const popupWithCardImage = new PopupWithImage(fullImage);
@@ -141,7 +141,7 @@ const cardList = new Section({
 const popupAddNewCard = new PopupWithForm({
   popUp: popUpNewCardForm, 
   handleSubmitForm: (cardData) => {
-    //popupAddNewCard.renderLoading('Сохранение ...');
+    popupAddNewCard.renderLoading('Сохранение ...');
     api.addCard(cardData)
       .then((cardInfo) => {
         cardList.addItem(createCard(cardInfo, userId));
@@ -151,7 +151,7 @@ const popupAddNewCard = new PopupWithForm({
         console.log(err);
       })
       .finally(() => {
-        //popupAddNewCard.renderLoading('Создать');
+        popupAddNewCard.renderLoading('Создать');
       })
   }
 });
@@ -164,16 +164,16 @@ placeAddPopUpButton.addEventListener('click', () => {
 popupAddNewCard.setEventListeners();
 //=====================================================
 // Форма для редактирования профиля
-const userInfo = new UserInfo({
-  name: profileName, 
-  occupation: profileOccupation,
-  avatar: profileAvatar
-});
+const userInfo = new UserInfo(
+  profileName, 
+  profileOccupation,
+  profileAvatar
+);
 
 const popUpEditProfile = new PopupWithForm({
   popUp: popUpProfile,
   handleSubmitForm: (userData) => {
-    //popUpEditProfile.renderLoading('Сохранение ...')
+    popUpEditProfile.renderLoading('Сохранение ...')
     api.updateUserInfo(userData)
       .then((res) => {
         userInfo.setUserInfo(res);
@@ -183,7 +183,7 @@ const popUpEditProfile = new PopupWithForm({
         console.log(err);
       })
       .finally(() => {
-      //  popUpEditProfile.renderLoading('Создать');
+        popUpEditProfile.renderLoading('Создать');
       });
   }
 });
@@ -193,7 +193,6 @@ profileEditButton.addEventListener('click', () => {
   const profileInfo = userInfo.getUserInfo();
   nameInput.value = profileInfo.name;
   occupationInput.value = profileInfo.occupation;
-  profileAvatar.src = profileInfo.avatar;
   profileFormValidator.handleErrorStyleDeletion();
 })
 
@@ -202,9 +201,9 @@ popUpEditProfile.setEventListeners();
 // Обновление аватара
 const popupChangeAvatar = new PopupWithForm({
   popUp: popupAvatarChange,
-  handleSubmitForm: () => {
-    //popupChangeAvatar.renderLoading('Сохранение ...');
-    api.updateUserAvatar(avatarInfo)
+  handleSubmitForm: (avatarInfo) => {
+    popupChangeAvatar.renderLoading('Сохранение ...');
+    api.updateUserAvatar(avatarInfo.avatar)
       .then((res) => {
         userInfo.updateAvatar(res);
         popupChangeAvatar.close();
@@ -213,7 +212,7 @@ const popupChangeAvatar = new PopupWithForm({
         console.log(err)
       })
       .finally(() => {
-       // popupChangeAvatar.renderLoading('Создать');
+        popupChangeAvatar.renderLoading('Создать');
       });
   }
 })
@@ -222,4 +221,5 @@ popupChangeAvatar.setEventListeners();
 
 profileAvatarEditButton.addEventListener('click', () => {
   popupChangeAvatar.open();
+  avatarFormValidator.handleErrorStyleDeletion();
 });

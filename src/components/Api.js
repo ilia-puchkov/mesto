@@ -35,12 +35,12 @@ class Api {
   }
 
   //Обновление аватара пользователя
-  updateUserAvatar(avatarInfo) {
+  updateUserAvatar(avatar) {
     return fetch(this._url + '/users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarInfo,
+        avatar: avatar,
       })
     })
     .then(this._checkResponse);

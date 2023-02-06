@@ -57,17 +57,26 @@ class Card {
 
   // Удаление лайка
   removeLike(likes) {
+    this._elementLikeButton.classList.remove('element__like-active');
     this.isLiked(false);
     this.setLikeCounter(likes);
     this._likes = likes;
   }
+
   // проверка наличия like
   isLiked() {
     return this._likes.find((like) => like._id === this._ownerId);
   }
+  
+  //Установка лайк по статусу
+  setInitialLike() {
+    if(this.isLiked()) {
+      this._elementLikeButton.classList.add('element__like-active');
+    }
+  }
 
   checkOwner() {
-    if(!this._ownerId === this._cardOwner) {
+    if(this._ownerId != this._cardOwner) {
       this._elementDeleteButton.classList.remove('element__delete-visible');
     }
   }
@@ -78,6 +87,8 @@ class Card {
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
     
+    this.setInitialLike();
+
     this.checkOwner();
     
     this.setLikeCounter(this._likes);
