@@ -1,6 +1,6 @@
 // Объявления
 // импорт для вебпак
-//import './pages/index.css';
+import './pages/index.css';
 
 // Import
 // import { initialCards } from "./utils/initialCards.js";
