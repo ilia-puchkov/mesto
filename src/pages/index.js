@@ -1,17 +1,17 @@
 // Объявления
 // импорт для вебпак
-import './pages/index.css';
+import './index.css'
 
 // Import
 // import { initialCards } from "./utils/initialCards.js";
-import { Api } from './components/Api.js';
-import { Card } from "./components/Card.js";
-import { FormValidator } from "./components/FormValidator.js";
-import { PopupWithConfirmation } from "./components/PopupWithCoinfirmation.js";
-import { PopupWithForm } from './components/PopupWithForm.js';
-import { PopupWithImage } from './components/PopupWithImage.js';
-import { Section } from './components/Section.js';
-import { UserInfo } from './components/UserInfo.js';
+import { Api } from '../components/Api.js';
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { Section } from '../components/Section.js';
+import { UserInfo } from '../components/UserInfo.js';
 import {
   formsConfig,
   popUpProfile,
@@ -29,7 +29,7 @@ import {
   popupAvatarChange,
   profileAvatarEditButton,
   popupWithCardConfirmation
-} from './utils/utils.js';
+} from '../utils/utils.js';
 
 //=====================================================
 // Класс для запросов
